@@ -1,0 +1,29 @@
+Instrucciones para queries
+
+/*
+
+Equipo N
+Integrantes:
+1887849 Victor Rafel Medina Gomez
+
+QUERY #N
+Descripcion:
+Creacion de Base de Datos [base de patos]
+Creacion de tablas [tabla]
+Insert de registros XXXXX
+
+Fecha de Creacion: yyyy-mm-dd
+
+Actualización yyyy-mm-dd
+Quitamos la tabla tal
+Agregamos el campo X
+/*
+
+(Palabras reservadas de sql o solo con mayusculas o solo con minusculas)
+
+CREATE DATABASE BaseDatos
+
+CREATE TABLE TablaUno
+(
+	Campo INT NULL
+)
