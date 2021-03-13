@@ -45,6 +45,12 @@ namespace Satio.Models
               .IsUnicode(false)
               .IsRequired();
 
+                entity.HasOne(e => e.ContactInfo)
+               .WithMany(y => y.RegisteredUsers)
+               .HasForeignKey("FK_RegisteredUser_ContactInfo");
+                //.HasConstraintName()
+
+
             });
 
             modelBuilder.Entity<Recipe>(entity =>
@@ -68,6 +74,11 @@ namespace Satio.Models
                 
                 entity.Property(e => e.Rating)
               .IsRequired();
+
+                entity.HasOne(e => e.RegisteredUser)
+               .WithMany(y => y.Recipes)
+               .HasForeignKey("FK_Recipe_RegisteredUser");
+                //.HasConstraintName()
 
             });
 
@@ -107,6 +118,11 @@ namespace Satio.Models
                 entity.Property(e => e.Quantity)
             .IsRequired();
 
+                entity.HasOne(e => e.Food)
+             .WithOne(y => y.Ingredient)
+             .HasForeignKey("FK_Ingredient_Food");
+                //.HasConstraintName()
+
             });
 
             modelBuilder.Entity<Warning>(entity =>
@@ -143,7 +159,15 @@ namespace Satio.Models
             .IsRequired();
 
                 entity.HasOne(e => e.RegisteredUser)
-                .WithMany(y => y.RegisteredUserRecipe);
+                  .WithMany(y => y.RegisteredUserRecipe)
+                  .HasForeignKey("FK_RegisteredUserRecipe_RegisteredUser");
+                //.HasConstraintName()
+
+                entity.HasOne(e => e.Recipe)
+                 .WithMany(y => y.RegisteredUserRecipe)
+                 .HasForeignKey("FK_RegisteredUserRecipe_Recipe");
+                //.HasConstraintName()
+
 
             });
 
@@ -158,6 +182,16 @@ namespace Satio.Models
                 entity.Property(e => e.IdIngredient)
             .IsRequired();
 
+                entity.HasOne(e => e.Ingredient)
+                .WithMany(y => y.RecipeIngredient)
+                .HasForeignKey("FK_RecipeIngredient_Ingredient");
+                //.HasConstraintName()
+
+                entity.HasOne(e => e.Recipe)
+                 .WithMany(y => y.RecipeIngredient)
+                 .HasForeignKey("FK_RecipeIngredient_Recipe");
+                //.HasConstraintName()
+
             });
 
 
@@ -170,6 +204,16 @@ namespace Satio.Models
 
                 entity.Property(e => e.IdWarning)
             .IsRequired();
+
+                entity.HasOne(e => e.Warning)
+              .WithMany(y => y.RecipeWarning)
+              .HasForeignKey("FK_RecipeWarning_Warning");
+                //.HasConstraintName()
+
+                entity.HasOne(e => e.Recipe)
+                 .WithMany(y => y.RecipeWarning)
+                 .HasForeignKey("FK_RecipeWarning_Recipe");
+                //.HasConstraintName()
 
             });
 

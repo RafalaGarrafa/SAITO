@@ -10,6 +10,7 @@ namespace Satio.Models
         public int Id { get; set; }
         public string Name { get; set; }
 
+        public virtual Ingredient Ingredient { get; set; }
 
     }
 }
