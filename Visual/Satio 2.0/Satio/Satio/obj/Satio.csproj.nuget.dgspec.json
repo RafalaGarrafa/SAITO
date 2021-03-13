@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\annnn\\OneDrive\\Escritorio\\Oi\\Documentos\\GitHub\\SAITO\\Visual\\Satio 2.0\\Satio\\Satio\\Satio.csproj": {}
+    "C:\\Users\\Liverpool\\Documents\\8o Semestre\\Programacion Web Donas\\SAITO\\Visual\\Satio 2.0\\Satio\\Satio\\Satio.csproj": {}
   },
   "projects": {
-    "C:\\Users\\annnn\\OneDrive\\Escritorio\\Oi\\Documentos\\GitHub\\SAITO\\Visual\\Satio 2.0\\Satio\\Satio\\Satio.csproj": {
+    "C:\\Users\\Liverpool\\Documents\\8o Semestre\\Programacion Web Donas\\SAITO\\Visual\\Satio 2.0\\Satio\\Satio\\Satio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\annnn\\OneDrive\\Escritorio\\Oi\\Documentos\\GitHub\\SAITO\\Visual\\Satio 2.0\\Satio\\Satio\\Satio.csproj",
+        "projectUniqueName": "C:\\Users\\Liverpool\\Documents\\8o Semestre\\Programacion Web Donas\\SAITO\\Visual\\Satio 2.0\\Satio\\Satio\\Satio.csproj",
         "projectName": "Satio",
-        "projectPath": "C:\\Users\\annnn\\OneDrive\\Escritorio\\Oi\\Documentos\\GitHub\\SAITO\\Visual\\Satio 2.0\\Satio\\Satio\\Satio.csproj",
-        "packagesPath": "C:\\Users\\annnn\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\annnn\\OneDrive\\Escritorio\\Oi\\Documentos\\GitHub\\SAITO\\Visual\\Satio 2.0\\Satio\\Satio\\obj\\",
+        "projectPath": "C:\\Users\\Liverpool\\Documents\\8o Semestre\\Programacion Web Donas\\SAITO\\Visual\\Satio 2.0\\Satio\\Satio\\Satio.csproj",
+        "packagesPath": "C:\\Users\\Liverpool\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Liverpool\\Documents\\8o Semestre\\Programacion Web Donas\\SAITO\\Visual\\Satio 2.0\\Satio\\Satio\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\annnn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Liverpool\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
