@@ -5,12 +5,11 @@
 SATIO is a program that allows you to see and share recipies.
 
 # Getting Started
-You can download the repository as a zip to get access.
+You can download the repository as a zip to get access to the files. You can also clone it.
 
 # Prerequisites
 -SQL Server Management Studio
 
-# Give examples
 # Installing
 1. Boot SQL Server Management Studio and open the "TableCreationQuery.sql" file that is in "SAITO/SQL/Queries"
 2. Execute the file ONCE so you can get the Database 
