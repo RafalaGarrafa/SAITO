@@ -5,23 +5,16 @@
 SATIO is a program that allows you to see and share recipies.
 
 # Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+You can download the repository as a zip to get access.
 
 # Prerequisites
-What things you need to install the software and how to install them
+-SQL Server Management Studio
 
 # Give examples
 # Installing
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-Give the example
-And repeat
-
-until finished
-g
+1. Boot SQL Server Management Studio and open the "TableCreationQuery.sql" file that is in "SAITO/SQL/Queries"
+2. Execute the file ONCE so you can get the Database 
 
 # Authors
-Inés Anahí Santiago Camacho - Initial work C#
-Víctor Rafael Medina Gómez - SQL Query and C# polish
+-Inés Anahí Santiago Camacho - Initial work C#
+-Víctor Rafael Medina Gómez - SQL Query and C# polish
