@@ -1,4 +1,6 @@
-
+--Equipo #9
+-- 1887950 Inés Anahí Santiago Camacho
+-- 1887849 Víctor Rafael Medina Gómez
 
 --QUERY #1
 --Descripcion:
