@@ -11,12 +11,13 @@ namespace Satio.Models
         public string Name { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        public string Imagen { get; set; }
+        public string ProfilePicture { get; set; }
         public int IdConctactInfo { get; set; }
 
 
         public virtual ContactInfo ContactInfo { get; set; }
         public virtual ICollection<Recipe> Recipes { get; set; }
+        public virtual ICollection<RegisteredUserRecipe> RegisteredUserRecipe { get; set; }
 
     }
 }

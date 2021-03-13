@@ -11,7 +11,7 @@ namespace Satio.Models
         public string Description { get; set; }
         public int ThreatLevel { get; set; }
 
-        public virtual ICollection<Recipe> Recipes { get; set; }
+        public virtual ICollection<RecipeWarning> RecipeWarning { get; set; }
 
     }
 }

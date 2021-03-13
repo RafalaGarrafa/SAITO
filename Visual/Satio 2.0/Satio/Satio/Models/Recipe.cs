@@ -12,13 +12,14 @@ namespace Satio.Models
         public string Steps { get; set; }
         public int PrepTime { get; set; }
         public int Difficulty { get; set; }
-        public int Raiting { get; set; }
+        public int Rating { get; set; }
         public int IdOwnerUser { get; set; }
 
 
-        public virtual ICollection<RegisteredUser> RegisteredUsers { get; set; }
-        public virtual ICollection<Ingredient> Ingredients { get; set; }
-        public virtual ICollection<Warning> Warnings { get; set; }
+        public virtual RegisteredUser RegisteredUser { get; set; }
+        public virtual ICollection<RegisteredUserRecipe> RegisteredUserRecipe { get; set; }
+        public virtual ICollection<RecipeIngredient> RecipeIngredient { get; set; }
+        public virtual ICollection<RecipeWarning> RecipeWarning { get; set; }
 
 
 

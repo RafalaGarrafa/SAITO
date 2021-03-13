@@ -13,7 +13,7 @@ namespace Satio.Models
 
 
         public virtual Food Food { get; set; }
-        public virtual ICollection<Recipe> Recipes { get; set; }
+        public virtual ICollection<RecipeIngredient> RecipeIngredient { get; set; }
 
     }
 }
