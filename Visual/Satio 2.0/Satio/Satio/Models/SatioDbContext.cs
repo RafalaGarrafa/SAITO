@@ -18,7 +18,11 @@ namespace Satio.Models
         public DbSet<RegisteredUserRecipe> RegisteredUserRecipe { get; set; }
         public DbSet<RecipeIngredient> RecipeIngredient { get; set; }
         public DbSet<RecipeWarning> RecipeWarning { get; set; }
-    
+
+        public SatioDbContext() { }
+
+        public SatioDbContext(DbContextOptions<SatioDbContext> options) : base(options) { }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<RegisteredUser>(entity =>
@@ -111,6 +115,16 @@ namespace Satio.Models
               .IsRequired();
             });
 
+             modelBuilder.Entity<Food>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+
+                entity.Property(e => e.Name)
+              .HasMaxLength(255)
+              .IsUnicode(false)
+              .IsRequired();
+            });
+            
             modelBuilder.Entity<Ingredient>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -120,9 +134,8 @@ namespace Satio.Models
 
                 entity.HasOne(e => e.Food)
              .WithOne(y => y.Ingredient)
-             .HasForeignKey("FK_Ingredient_Food");
-                //.HasConstraintName()
-
+             .HasForeignKey<Food>("FK_Ingredient_Food");
+               // .HasConstraintName("FK_Ingredient_Food");
             });
 
             modelBuilder.Entity<Warning>(entity =>
@@ -133,16 +146,6 @@ namespace Satio.Models
             .IsRequired();
 
                 entity.Property(e => e.Description)
-              .HasMaxLength(255)
-              .IsUnicode(false)
-              .IsRequired();
-            });
-
-            modelBuilder.Entity<Food>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-
-                entity.Property(e => e.Name)
               .HasMaxLength(255)
               .IsUnicode(false)
               .IsRequired();

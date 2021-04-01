@@ -7,10 +7,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Satio.Models;
 
 namespace Satio
 {
@@ -32,6 +34,12 @@ namespace Satio
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Satio", Version = "v1" });
             });
+
+            services.AddDbContext<SatioDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("SqlConnection"))
+            );
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
