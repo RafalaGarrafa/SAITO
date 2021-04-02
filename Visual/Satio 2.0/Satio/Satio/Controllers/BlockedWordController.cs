@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Satio.Classes.Core;
 using Satio.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -14,7 +16,7 @@ namespace Satio.Controllers
     public class BlockedWordController : ControllerBase
     {
 
-        SatioDbContext dbContext;
+        private SatioDbContext dbContext;
 
         public BlockedWordController(SatioDbContext dbContext) 
         {
@@ -23,16 +25,29 @@ namespace Satio.Controllers
 
         // GET: api/<BlockedWordController>
         [HttpGet]
-        public IEnumerable<BlockedWord> GetAll()
+        public IActionResult GetAll()
         {
-            List<BlockedWord> blockedWords = dbContext.BlockedWord.ToList();
+            /*
+                //List<BlockedWord> blockedWords = dbContext.BlockedWord.ToList();
 
-            /*LINQ Examples
+            LINQ Examples
              
-            //List<BlockedWord> blockedWords = dbContext.BlockedWord.Where(blockedWord => blockedWord.Id > 1).ToList();
+            //List<BlockedWord> blockedWords = dbContext.BlockedWord.Where(blockedWord => bldockedWord.Id > 1).ToList();
+
+            
+           // return blockedWords;
 
             */
-            return blockedWords;
+            try
+            {
+                BlockedWordCore blockedWordCore = new BlockedWordCore(dbContext);
+                return Ok(blockedWordCore.GetAll());
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex);
+            }
 
 
         }
@@ -44,6 +59,25 @@ namespace Satio.Controllers
              List<BlockedWord> blockedWord = dbContext.BlockedWord.Where(blockedWordSingle => blockedWordSingle.Id == id).ToList();
 
             return blockedWord;
+        }
+        
+        [HttpPost]
+        public IActionResult Create([FromBody]BlockedWord blockedWord)
+        {
+            try
+            {
+                BlockedWordCore blockedWordCore = new BlockedWordCore(dbContext);
+             
+                blockedWordCore.Create(blockedWord);
+
+                return Ok("Blocked Word Added Succesfully");
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex);
+
+            }
         }
 
     }
