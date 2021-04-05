@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Satio.Models
 {
-    public class SatioDbContext : DbContext
+    public class SatioDbContext : IdentityDbContext<User>
     {
         public DbSet<RegisteredUser> RegisteredUser { get; set; }
         public DbSet<Recipe> Recipe { get; set; }
@@ -174,7 +175,6 @@ namespace Satio.Models
 
             });
 
-
             modelBuilder.Entity<RecipeIngredient>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -197,7 +197,6 @@ namespace Satio.Models
 
             });
 
-
             modelBuilder.Entity<RecipeWarning>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -219,8 +218,6 @@ namespace Satio.Models
                 //.HasConstraintName()
 
             });
-
-
 
 
         }
