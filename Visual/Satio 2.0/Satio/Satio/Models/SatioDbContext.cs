@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,7 @@ namespace Satio.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            #region SATIO
             modelBuilder.Entity<RegisteredUser>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -219,6 +221,62 @@ namespace Satio.Models
 
             });
 
+            modelBuilder.Entity<BlockedWord>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+
+                entity.Property(e => e.Word)
+                .IsRequired();
+
+            });
+
+            #endregion
+
+            #region IDENTITY
+
+            modelBuilder.Entity<User>(user =>
+            {
+                user.ToTable("AspNetUsers");
+                user.HasKey(e => e.Id);
+            });
+
+            modelBuilder.Entity<IdentityRole<string>>(entity =>
+            {
+                entity.ToTable("AspNetRoles");
+                entity.HasKey(e => e.Id);
+            });
+
+            modelBuilder.Entity<IdentityUserLogin<string>>(entity =>
+            {
+                entity.ToTable("AspNetUserLogins");
+                entity.HasKey("LoginProvider", "ProviderKey");
+            });
+
+            modelBuilder.Entity<IdentityRoleClaim<string>>(entity =>
+            {
+                entity.ToTable("AspNetRoleClaims");
+                entity.HasKey(e => e.Id);
+            });
+
+            modelBuilder.Entity<IdentityUserRole<string>>(entity =>
+            {
+                entity.ToTable("AspNetUserRoles");
+                entity.HasKey("UserId", "RoleId");
+            });
+
+            modelBuilder.Entity<IdentityUserToken<string>>(entity =>
+            {
+                entity.ToTable("AspNetUserTokens");
+                entity.HasKey("UserId", "LoginProvider");
+            });
+
+            modelBuilder.Entity<IdentityUserClaim<string>>(entity =>
+            {
+                entity.ToTable("AspNetUserClaims");
+                entity.HasKey(e => e.Id);
+            });
+
+            #endregion
 
         }
     }

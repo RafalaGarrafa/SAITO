@@ -13,6 +13,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Satio.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace Satio
 {
@@ -39,7 +43,41 @@ namespace Satio
                 options.UseSqlServer(Configuration.GetConnectionString("SqlConnection"))
             );
 
+            services.AddIdentity<User, IdentityRole>(options => {
+                options.Password.RequiredLength = 4;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireLowercase = false;
 
+                options.SignIn.RequireConfirmedEmail = false;
+            })
+                .AddUserManager<UserManager<User>>()
+                .AddSignInManager<SignInManager<User>>()
+                .AddEntityFrameworkStores<SatioDbContext>();
+
+             #region TOKENS
+            
+            // get Secretkey
+            var key = Encoding.ASCII.GetBytes(Configuration.GetValue<string>("SecretKey"));         
+
+            services.AddAuthentication(X => {
+                X.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                X.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
+            }).AddJwtBearer( x => {
+                x.RequireHttpsMetadata = false;     // false porque no hay certificado
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,    // token fue generado por encoding
+                    ValidateIssuer = false,             // Validar quien generó ese token
+                    ValidateAudience = false,           // Validar a quien se lo estamos mandando
+                    IssuerSigningKey = new SymmetricSecurityKey(key)
+                };
+
+            });
+
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
