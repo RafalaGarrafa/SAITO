@@ -156,8 +156,8 @@ namespace Satio.Classes.Core
 
 
                     ////// Baja física
-                    //dbContext.Remove(blockedWord);
-                    //dbContext.SaveChanges();
+                    dbContext.Remove(blockedWord);
+                    dbContext.SaveChanges();
 
 
 
@@ -167,7 +167,7 @@ namespace Satio.Classes.Core
                     //BlockedWord blockedWord2 = dbContext.BlockedWord
                     //    .Include(x => x.TablaDependiente)
                     //    .FirstOrDefault(x => x.Id == id);
-                   
+
                     //dbContext.Remove(blockedWord2);
                     //dbContext.SaveChanges();
 

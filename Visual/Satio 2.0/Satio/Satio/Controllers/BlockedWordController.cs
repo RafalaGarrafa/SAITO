@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Satio.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class BlockedWordController : ControllerBase
@@ -111,9 +111,9 @@ namespace Satio.Controllers
             {
                 BlockedWordCore blockedWordCore = new BlockedWordCore(dbContext);
 
-                blockedWordCore.Update(blockedWord, id);
+                blockedWordCore.Delete(id);
 
-                return Ok("Blocked Word Updated Succesfully");
+                return Ok("Blocked Word Deleted Succesfully");
             }
             catch (Exception ex)
             {
