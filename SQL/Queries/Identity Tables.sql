@@ -1,5 +1,6 @@
 USE [Satio]
 GO
+
 /****** Object:  Table [dbo].[AspNetRoleClaims]    Script Date: 27/03/2021 11:05:23 a. m. ******/
 SET ANSI_NULLS ON
 GO
