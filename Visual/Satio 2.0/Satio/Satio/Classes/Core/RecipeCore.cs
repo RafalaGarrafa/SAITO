@@ -59,6 +59,8 @@ namespace Satio.Classes.Core
                         Steps = re.Steps
                     }).ToList();
 
+
+
                 /*
                  * 
                  * Ejemplo Joins
