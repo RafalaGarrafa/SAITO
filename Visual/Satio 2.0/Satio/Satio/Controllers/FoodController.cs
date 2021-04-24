@@ -7,40 +7,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-
 namespace Satio.Controllers
-{
+{ 
     //[Authorize]
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class RecipeController : ControllerBase
+    public class FoodController : ControllerBase
     {
+      
         private SatioDbContext dbContext;
 
-        public RecipeController(SatioDbContext dbContext)
+        public FoodController(SatioDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
 
-        // GET: api/<BlockedWordController>
         [HttpGet]
         public IActionResult GetAll()
         {
-            /*
-                //List<BlockedWord> blockedWords = dbContext.BlockedWord.ToList();
-
-            LINQ Examples
-             
-            //List<BlockedWord> blockedWords = dbContext.BlockedWord.Where(blockedWord => bldockedWord.Id > 1).ToList();
-
-            
-           // return blockedWords;
-
-            */
+           
             try
             {
-                RecipeCore recipeCore = new RecipeCore(dbContext);
-                return Ok(recipeCore.GetAll());
+                FoodCore foodCore = new FoodCore(dbContext);
+                return Ok(foodCore.GetAll());
 
             }
             catch (Exception ex)
@@ -50,36 +39,36 @@ namespace Satio.Controllers
 
 
         }
-        [HttpGet("{id}")]
-        public string GetAllFromUser([FromRoute] int id)
-        {
+        //[HttpGet("{id}")]
+        //public string GetAllFromRecipe([FromRoute] int id)
+        //{
 
-            RecipeCore recipeCore = new RecipeCore(dbContext);
-            recipeCore.GetAllFromUser(id);
-            return "wdad";
+        //    //FoodCore foodCore = new FoodCore(dbContext);
+        //    //foodCore.GetAllFromRecipe(id);
+        //    //return "wdad";
 
 
-        }
+        //}
 
         // GET api/<BlockedWordController>/5
         [HttpGet("{id}")]
-        public IEnumerable<Recipe> Get(int id)
+        public IEnumerable<Food> Get(int id)
         {
-            List<Recipe> recipes = dbContext.Recipe.Where(recipesSingle => recipesSingle.Id == id).ToList();
+            List<Food> food = dbContext.Food.Where(foodsSingle => foodsSingle.Id == id).ToList();
 
-            return recipes;
+            return food;
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Recipe recipe)
+        public IActionResult Create([FromBody] Food food)
         {
             try
             {
-                RecipeCore recipeCore = new RecipeCore(dbContext);
+                FoodCore foodCore = new FoodCore(dbContext);
 
-                recipeCore.Create(recipe);
+                foodCore.Create(food);
 
-                return Ok("recipe Word Added Succesfully");
+                return Ok("food Added Succesfully");
             }
             catch (Exception ex)
             {
@@ -91,15 +80,15 @@ namespace Satio.Controllers
 
         // PUT
         [HttpPut("{id}")]
-        public IActionResult Update([FromBody] Recipe recipe, [FromRoute] int id)
+        public IActionResult Update([FromBody] Food food, [FromRoute] int id)
         {
             try
             {
-                RecipeCore recipeCore = new RecipeCore(dbContext);
+                FoodCore foodCore = new FoodCore(dbContext);
 
-                recipeCore.Update(recipe, id);
+                foodCore.Update(food, id);
 
-                return Ok("recipe Word Updated Succesfully");
+                return Ok("food Word Updated Succesfully");
             }
             catch (Exception ex)
             {
@@ -116,9 +105,10 @@ namespace Satio.Controllers
         {
             try
             {
-                RecipeCore recipeCore = new RecipeCore(dbContext);
+                FoodCore foodCore = new FoodCore(dbContext);
 
-                recipeCore.Delete(id);
+
+                foodCore.Delete(id);
 
                 return Ok("recipe Word Deleted Succesfully");
             }
@@ -130,5 +120,6 @@ namespace Satio.Controllers
             }
 
         }
+
     }
 }

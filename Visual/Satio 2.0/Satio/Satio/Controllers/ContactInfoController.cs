@@ -13,11 +13,11 @@ namespace Satio.Controllers
     //[Authorize]
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class RecipeController : ControllerBase
+    public class ContactInfoController : ControllerBase
     {
         private SatioDbContext dbContext;
 
-        public RecipeController(SatioDbContext dbContext)
+        public ContactInfoController(SatioDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
@@ -26,21 +26,12 @@ namespace Satio.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            /*
-                //List<BlockedWord> blockedWords = dbContext.BlockedWord.ToList();
+           
 
-            LINQ Examples
-             
-            //List<BlockedWord> blockedWords = dbContext.BlockedWord.Where(blockedWord => bldockedWord.Id > 1).ToList();
-
-            
-           // return blockedWords;
-
-            */
             try
             {
-                RecipeCore recipeCore = new RecipeCore(dbContext);
-                return Ok(recipeCore.GetAll());
+                ContactInfoCore contactInfoCore = new ContactInfoCore(dbContext);
+                return Ok(contactInfoCore.GetAll());
 
             }
             catch (Exception ex)
@@ -50,36 +41,27 @@ namespace Satio.Controllers
 
 
         }
-        [HttpGet("{id}")]
-        public string GetAllFromUser([FromRoute] int id)
-        {
-
-            RecipeCore recipeCore = new RecipeCore(dbContext);
-            recipeCore.GetAllFromUser(id);
-            return "wdad";
-
-
-        }
 
         // GET api/<BlockedWordController>/5
         [HttpGet("{id}")]
-        public IEnumerable<Recipe> Get(int id)
+        public IEnumerable<ContactInfo> Get(int id)
         {
-            List<Recipe> recipes = dbContext.Recipe.Where(recipesSingle => recipesSingle.Id == id).ToList();
+            List<ContactInfo> contactInfo = dbContext.ContactInfo.Where(contactInfoingle => contactInfoingle.Id == id).ToList();
 
-            return recipes;
+            return contactInfo;
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Recipe recipe)
+        public IActionResult Create([FromBody] ContactInfo contactInfo)
         {
             try
             {
-                RecipeCore recipeCore = new RecipeCore(dbContext);
+                ContactInfoCore contactInfoCore = new ContactInfoCore(dbContext);
 
-                recipeCore.Create(recipe);
 
-                return Ok("recipe Word Added Succesfully");
+                contactInfoCore.Create(contactInfo);
+
+                return Ok("Blocked Word Added Succesfully");
             }
             catch (Exception ex)
             {
@@ -91,15 +73,15 @@ namespace Satio.Controllers
 
         // PUT
         [HttpPut("{id}")]
-        public IActionResult Update([FromBody] Recipe recipe, [FromRoute] int id)
+        public IActionResult Update([FromBody] ContactInfo contactInfo, [FromRoute] int id)
         {
             try
             {
-                RecipeCore recipeCore = new RecipeCore(dbContext);
+                ContactInfoCore contactInfoCore = new ContactInfoCore(dbContext);
 
-                recipeCore.Update(recipe, id);
+                contactInfoCore.Update(contactInfo, id);
 
-                return Ok("recipe Word Updated Succesfully");
+                return Ok("Blocked Word Updated Succesfully");
             }
             catch (Exception ex)
             {
@@ -116,11 +98,11 @@ namespace Satio.Controllers
         {
             try
             {
-                RecipeCore recipeCore = new RecipeCore(dbContext);
+                ContactInfoCore contactInfoCore = new ContactInfoCore(dbContext);
 
-                recipeCore.Delete(id);
+                contactInfoCore.Delete(id);
 
-                return Ok("recipe Word Deleted Succesfully");
+                return Ok("Blocked Word Deleted Succesfully");
             }
             catch (Exception ex)
             {

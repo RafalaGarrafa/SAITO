@@ -1,9 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Satio.Models;
+using Satio.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 namespace Satio.Classes.Core
 {
     public class RecipeCore
@@ -38,7 +40,7 @@ namespace Satio.Classes.Core
 
         }
 
-        public List<Recipe> GetAllFromUser(int id)
+        public void GetAllFromUser(int id)
         {
             try
             {
@@ -54,33 +56,27 @@ namespace Satio.Classes.Core
                         Id = us.Id,
                         Username = us.Name,
                         RecipeName = re.Name,
+                        Difficulty = re.Difficulty,
                         PrepTime = re.PrepTime,
                         Rating = re.Rating,
                         Steps = re.Steps
                     }).ToList();
 
-
-
-                /*
-                 * 
-                 * Ejemplo Joins
-                 
-                var students = (
-                    from s in dbContext.Student
-                    join sSchoolSubject in dbContext.StudentSchoolSubject on s.Id equals sSchoolSubject.StudentId
-                    join ss in dbContext.SchoolSubject on sSchoolSubjectId equals ss.Id
-                    where s.Active == true
-                    select new
+                RecipeModel structure = recipes.GroupBy(x => (x.Id, x.Username)).Select(x => new RecipeModel
+                {
+                    Username = x.Key.Username,
+                    Recipes = x.Select(y => new RecipesViewModel
                     {
-                        nombre = s.Name,
-                        apellido = s.LasName
-                        subject = ss.Name
-                    }
-                ).ToList();
-                 
-                 */
+                        Name = y.RecipeName,
+                        Difficulty = y.Difficulty,
+                        PrepTime = y.PrepTime,
+                        Rating = y.Rating,
+                        Steps = y.Steps
+                    }).ToList()
+                }).First();
 
-                return recipes;
+
+               // return structure;
             }
             catch (Exception ex)
             {
