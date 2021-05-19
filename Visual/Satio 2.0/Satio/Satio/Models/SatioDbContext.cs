@@ -107,7 +107,7 @@ namespace Satio.Models
               .IsUnicode(false)
               .IsRequired();
 
-                entity.Property(e => e.Facebok)
+                entity.Property(e => e.Facebook)
               .HasMaxLength(255)
               .IsUnicode(false)
               .IsRequired();

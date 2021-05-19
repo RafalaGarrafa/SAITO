@@ -12,7 +12,7 @@ namespace Satio.Models
         public string LastName { get; set; }
         public string Email { get; set; }
         public string ProfilePicture { get; set; }
-        public int IdConctactInfo { get; set; }
+        public int IdContactInfo { get; set; }
 
 
         public virtual ContactInfo ContactInfo { get; set; }

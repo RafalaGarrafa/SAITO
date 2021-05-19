@@ -9,13 +9,27 @@
 
 --Fecha de creacion 2021/03/13
 
---Actualizacion 2021/03/13
+--Actualizacion 2021/05/19
+	--Resolvi el 
+drop database Satio
+GO
 
 CREATE DATABASE Satio
 GO
 
 USE Satio
 GO
+
+drop table RegisteredUserRecipe
+drop table RecipeIngredient
+drop table RecipeWarning
+drop table Ingredient
+drop table Recipe
+drop table RegisteredUser
+drop table ContactInfo
+drop table Food
+drop table Warning
+drop table BlockedWord
 
 
 CREATE TABLE ContactInfo
@@ -38,7 +52,7 @@ CREATE TABLE RegisteredUser
 	Email VARCHAR(100) NOT NULL,
 	IdContactInfo INT NOT NULL,
 
-	CONSTRAINT FK_RegisteredUser_ContactInfo FOREIGN KEY (Id) REFERENCES ContactInfo(Id),
+	CONSTRAINT FK_RegisteredUser_ContactInfo FOREIGN KEY (IdContactInfo) REFERENCES ContactInfo(Id),
 
 )
 GO
@@ -53,7 +67,7 @@ CREATE TABLE Recipe
 	Rating SMALLINT NOT NULL DEFAULT 0,
 
 	IdOwnerUser INT NOT NULL,
-	CONSTRAINT FK_Recipe_RegisteredUser FOREIGN KEY (Id) REFERENCES RegisteredUser(Id),
+	CONSTRAINT FK_Recipe_RegisteredUser FOREIGN KEY (IdOwnerUser) REFERENCES RegisteredUser(Id),
 
 )
 GO
@@ -70,7 +84,7 @@ CREATE TABLE Ingredient
 	Id INT PRIMARY KEY NOT NULL IDENTITY(1, 1),
 	Quantity INT NOT NULL,
 	IdFood INT NOT NULL,
-	CONSTRAINT FK_Ingredient_Food FOREIGN KEY (Id) REFERENCES Food(Id),
+	CONSTRAINT FK_Ingredient_Food FOREIGN KEY (IdFood) REFERENCES Food(Id),
 
 )
 GO
@@ -96,8 +110,8 @@ CREATE TABLE RegisteredUserRecipe
 	IdRegisteredUser INT NOT NULL,
 	IdRecipe INT NOT NULL,
 
-	CONSTRAINT FK_RegisteredUserRecipe_RegisteredUser FOREIGN KEY (Id) REFERENCES RegisteredUser(Id),
-	CONSTRAINT FK_RegisteredUserRecipe_Recipe FOREIGN KEY (Id) REFERENCES Recipe(Id)
+	CONSTRAINT FK_RegisteredUserRecipe_RegisteredUser FOREIGN KEY (IdRegisteredUser) REFERENCES RegisteredUser(Id),
+	CONSTRAINT FK_RegisteredUserRecipe_Recipe FOREIGN KEY (IdRecipe) REFERENCES Recipe(Id)
 )
 GO
 
@@ -107,8 +121,8 @@ CREATE TABLE RecipeIngredient
 	IdIngredient INT NOT NULL,
 	IdRecipe INT NOT NULL,
 
-	CONSTRAINT FK_RecipeIngredient_Ingredient FOREIGN KEY (Id) REFERENCES Ingredient(Id),
-	CONSTRAINT FK_RecipeIngredient_Recipe FOREIGN KEY (Id) REFERENCES Recipe(Id)
+	CONSTRAINT FK_RecipeIngredient_Ingredient FOREIGN KEY (IdIngredient) REFERENCES Ingredient(Id),
+	CONSTRAINT FK_RecipeIngredient_Recipe FOREIGN KEY (IdRecipe) REFERENCES Recipe(Id)
 )
 GO
 
@@ -118,8 +132,8 @@ CREATE TABLE RecipeWarning
 	IdWarning INT NOT NULL,
 	IdRecipe INT NOT NULL,
 
-	CONSTRAINT FK_RecipeWarning_Warning FOREIGN KEY (Id) REFERENCES Warning(Id),
-	CONSTRAINT FK_RecipeWarning_Recipe FOREIGN KEY (Id) REFERENCES Recipe(Id)
+	CONSTRAINT FK_RecipeWarning_Warning FOREIGN KEY (IdWarning) REFERENCES Warning(Id),
+	CONSTRAINT FK_RecipeWarning_Recipe FOREIGN KEY (IdRecipe) REFERENCES Recipe(Id)
 )
 GO
 
