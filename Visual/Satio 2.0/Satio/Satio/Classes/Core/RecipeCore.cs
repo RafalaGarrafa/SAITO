@@ -40,7 +40,7 @@ namespace Satio.Classes.Core
 
         }
 
-        public void GetAllFromUser(int id)
+        public RecipeModel GetAllFromUser(int id)
         {
             try
             {
@@ -76,7 +76,7 @@ namespace Satio.Classes.Core
                 }).First();
 
 
-               // return structure;
+               return structure;
             }
             catch (Exception ex)
             {

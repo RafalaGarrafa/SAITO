@@ -54,7 +54,8 @@ namespace Satio.Models
 
                 entity.HasOne(e => e.ContactInfo)
                .WithMany(y => y.RegisteredUsers)
-               .HasForeignKey("FK_RegisteredUser_ContactInfo");
+               .HasForeignKey(e => e.IdContactInfo);
+               ///.HasForeignKey("FK_RegisteredUser_ContactInfo");
                 //.HasConstraintName()
 
 
@@ -84,7 +85,8 @@ namespace Satio.Models
 
                 entity.HasOne(e => e.RegisteredUser)
                .WithMany(y => y.Recipes)
-               .HasForeignKey("FK_Recipe_RegisteredUser");
+               .HasForeignKey(e => e.IdOwnerUser);
+               //.HasForeignKey("FK_Recipe_RegisteredUser");
                 //.HasConstraintName()
 
             });
@@ -137,7 +139,8 @@ namespace Satio.Models
 
                 entity.HasOne(e => e.Food)
              .WithOne(y => y.Ingredient)
-             .HasForeignKey<Food>("FK_Ingredient_Food");
+             .HasForeignKey<Food>(e => e.IdFood);
+             //.HasForeignKey<Food>("FK_Ingredient_Food");
                // .HasConstraintName("FK_Ingredient_Food");
             });
 
@@ -166,12 +169,14 @@ namespace Satio.Models
 
                 entity.HasOne(e => e.RegisteredUser)
                   .WithMany(y => y.RegisteredUserRecipe)
-                  .HasForeignKey("FK_RegisteredUserRecipe_RegisteredUser");
+                  .HasForeignKey(e => e.IdRegisteredUser);
+                // .HasForeignKey("FK_RegisteredUserRecipe_RegisteredUser");
                 //.HasConstraintName()
 
                 entity.HasOne(e => e.Recipe)
                  .WithMany(y => y.RegisteredUserRecipe)
-                 .HasForeignKey("FK_RegisteredUserRecipe_Recipe");
+                 .HasForeignKey(e => e.IdRecipe);
+                // .HasForeignKey("FK_RegisteredUserRecipe_Recipe");
                 //.HasConstraintName()
 
 
@@ -189,12 +194,14 @@ namespace Satio.Models
 
                 entity.HasOne(e => e.Ingredient)
                 .WithMany(y => y.RecipeIngredient)
-                .HasForeignKey("FK_RecipeIngredient_Ingredient");
+                .HasForeignKey(e => e.IdIngredient);
+                //.HasForeignKey("FK_RecipeIngredient_Ingredient");
                 //.HasConstraintName()
 
                 entity.HasOne(e => e.Recipe)
                  .WithMany(y => y.RecipeIngredient)
-                 .HasForeignKey("FK_RecipeIngredient_Recipe");
+                 .HasForeignKey(e => e.IdRecipe);
+                 //.HasForeignKey("FK_RecipeIngredient_Recipe");
                 //.HasConstraintName()
 
             });
@@ -211,12 +218,14 @@ namespace Satio.Models
 
                 entity.HasOne(e => e.Warning)
               .WithMany(y => y.RecipeWarning)
-              .HasForeignKey("FK_RecipeWarning_Warning");
+              .HasForeignKey(e => e.IdWarning);
+             // .HasForeignKey("FK_RecipeWarning_Warning");
                 //.HasConstraintName()
 
                 entity.HasOne(e => e.Recipe)
                  .WithMany(y => y.RecipeWarning)
-                 .HasForeignKey("FK_RecipeWarning_Recipe");
+                 .HasForeignKey(e => e.IdRecipe);
+                 //.HasForeignKey("FK_RecipeWarning_Recipe");
                 //.HasConstraintName()
 
             });

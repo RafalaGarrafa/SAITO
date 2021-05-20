@@ -11,8 +11,8 @@ namespace Satio.Models
         public string Name { get; set; }
         public string Steps { get; set; }
         public int PrepTime { get; set; }
-        public int Difficulty { get; set; }
-        public int Rating { get; set; }
+        public Int16 Difficulty { get; set; }
+        public Int16 Rating { get; set; }
         public int IdOwnerUser { get; set; }
 
 

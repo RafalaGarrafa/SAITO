@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Satio.Classes.Core;
 using Satio.Models;
+using Satio.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,12 +52,20 @@ namespace Satio.Controllers
 
         }
         [HttpGet("{id}")]
-        public string GetAllFromUser([FromRoute] int id)
+        public IActionResult GetAllFromUser([FromRoute] int id)
         {
+            try
+            {
 
-            RecipeCore recipeCore = new RecipeCore(dbContext);
-            recipeCore.GetAllFromUser(id);
-            return "wdad";
+                RecipeCore recipeCore = new RecipeCore(dbContext);
+                return Ok(recipeCore.GetAllFromUser(id));
+                // return "wdad";
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex);
+
+            }
 
 
         }
@@ -79,7 +88,7 @@ namespace Satio.Controllers
 
                 recipeCore.Create(recipe);
 
-                return Ok("recipe Word Added Succesfully");
+                return Ok("recipe Added Succesfully");
             }
             catch (Exception ex)
             {

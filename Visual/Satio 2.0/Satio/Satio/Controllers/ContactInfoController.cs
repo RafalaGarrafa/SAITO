@@ -61,7 +61,7 @@ namespace Satio.Controllers
 
                 contactInfoCore.Create(contactInfo);
 
-                return Ok("Blocked Word Added Succesfully");
+                return Ok("Contact Info Added Succesfully");
             }
             catch (Exception ex)
             {
@@ -81,7 +81,7 @@ namespace Satio.Controllers
 
                 contactInfoCore.Update(contactInfo, id);
 
-                return Ok("Blocked Word Updated Succesfully");
+                return Ok("Contact Info  Updated Succesfully");
             }
             catch (Exception ex)
             {
@@ -102,7 +102,7 @@ namespace Satio.Controllers
 
                 contactInfoCore.Delete(id);
 
-                return Ok("Blocked Word Deleted Succesfully");
+                return Ok("Contact Info  Deleted Succesfully");
             }
             catch (Exception ex)
             {

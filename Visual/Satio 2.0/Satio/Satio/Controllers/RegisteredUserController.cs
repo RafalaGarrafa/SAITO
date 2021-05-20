@@ -65,6 +65,18 @@ namespace Satio.Controllers
         {
             try
             {
+                ContactInfoCore contactInfoCore = new ContactInfoCore(dbContext);
+
+                ContactInfo newContactInfo = new ContactInfo();
+
+                newContactInfo.Facebook = "";
+                newContactInfo.Instagram = "";
+                newContactInfo.WebPage = "";
+                newContactInfo.Twitter = "";
+                newContactInfo.YouTube = "";
+
+                contactInfoCore.Create(newContactInfo);
+               
                 RegisteredUserCore registeredUserCore = new RegisteredUserCore(dbContext);
 
                 registeredUserCore.Create(registeredUser);

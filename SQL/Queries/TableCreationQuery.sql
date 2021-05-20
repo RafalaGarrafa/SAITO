@@ -10,7 +10,7 @@
 --Fecha de creacion 2021/03/13
 
 --Actualizacion 2021/05/19
-	--Resolvi el 
+	--Arregle unas llaves foráneas que estaban mal asignadas
 drop database Satio
 GO
 
@@ -30,6 +30,19 @@ drop table ContactInfo
 drop table Food
 drop table Warning
 drop table BlockedWord
+
+
+select * from RegisteredUserRecipe
+select * from RecipeIngredient
+select * from RecipeWarning
+select * from Ingredient
+select * from Recipe
+select * from RegisteredUser
+select * from ContactInfo
+select * from Food
+select * from Warning
+select * from BlockedWord
+
 
 
 CREATE TABLE ContactInfo
