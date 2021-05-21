@@ -44,7 +44,7 @@ namespace Satio.Classes.Core
             {
 
                 dbContext.Add(contactInfo);
-                dbContext.
+                //dbContext.
                 dbContext.SaveChanges();
             }
             catch (Exception ex)

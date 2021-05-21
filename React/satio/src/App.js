@@ -1,8 +1,8 @@
 import React from 'react';
 import {BrowserRouter as Router, Route} from "react-router-dom"
-import ClassComponent from './components/ClassComponent';
-import FunctionalComponent from './components/FunctionalComponent';
-import { formatMs } from '@material-ui/core';
+//zimport ClassComponent from './components/ClassComponent';
+//import FunctionalComponent from './components/FunctionalComponent';
+//import { formatMs } from '@material-ui/core';
 
 import Index from './components/Index';
 import UsersIndex from './components/users/Index'
