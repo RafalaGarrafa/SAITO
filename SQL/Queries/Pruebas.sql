@@ -8,7 +8,8 @@
 
 --Fecha de creacion 2021/23/04
 
---Actualizacion 2021/23/04
+--Actualizacion 2021/21/05
+--Pruebas para ingreso de Información de Contacto
 
 
 USE [Satio]
@@ -28,6 +29,8 @@ INSERT INTO [dbo].[ContactInfo]
            ,''
            ,'')
 GO
+
+select Id from [ContactInfo] order by Id desc 
 
 select * from ContactInfo
 

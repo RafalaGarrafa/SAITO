@@ -65,12 +65,16 @@ namespace Satio.Controllers
                 newContactInfo.YouTube = "";
 
                 contactInfoCore.Create(newContactInfo);
+
+                ContactInfo lastCI = contactInfoCore.GetLastRegistered();
+
+                registeredUser.IdContactInfo = lastCI.Id;
                
                 RegisteredUserCore registeredUserCore = new RegisteredUserCore(dbContext);
 
                 registeredUserCore.Create(registeredUser);
 
-                return Ok("registeredUser Word Added Succesfully");
+                return Ok("registeredUser Added Succesfully");
             }
             catch (Exception ex)
             {

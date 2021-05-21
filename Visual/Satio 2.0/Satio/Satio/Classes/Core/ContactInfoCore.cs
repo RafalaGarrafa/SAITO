@@ -15,6 +15,29 @@ namespace Satio.Classes.Core
             this.dbContext = dbContext;
         }
 
+        public ContactInfo GetLastRegistered()
+        {
+            try
+            {
+
+                List<ContactInfo> contactInfos = (
+                    from ci in dbContext.ContactInfo
+                    select ci
+
+                    ).ToList();
+
+                return contactInfos.OrderByDescending(x => x.Id).ToList().First();
+
+
+                //return contactInfos;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public List<ContactInfo> GetAll()
         {
             try
