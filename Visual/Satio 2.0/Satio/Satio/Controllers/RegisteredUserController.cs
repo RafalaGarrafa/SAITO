@@ -26,17 +26,6 @@ namespace Satio.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            /*
-                //List<BlockedWord> blockedWords = dbContext.BlockedWord.ToList();
-
-            LINQ Examples
-             
-            //List<BlockedWord> blockedWords = dbContext.BlockedWord.Where(blockedWord => bldockedWord.Id > 1).ToList();
-
-            
-           // return blockedWords;
-
-            */
             try
             {
                 RegisteredUserCore registeredUserCore = new RegisteredUserCore(dbContext);
