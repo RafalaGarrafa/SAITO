@@ -9,7 +9,7 @@
 --Fecha de creacion 2021/23/04
 
 --Actualizacion 2021/21/05
---Pruebas para ingreso de Información de Contacto
+--Pruebas para ingreso de Recetas, Ingredientes, Comida y Warnings
 
 
 USE [Satio]
@@ -76,8 +76,104 @@ INSERT INTO [dbo].[RegisteredUserRecipe]
            ([IdRegisteredUser]
            ,[IdRecipe])
      VALUES
+           (2
+           ,4)
+GO
+
+use Satio
+GO
+
+INSERT INTO [dbo].[Food]
+           ([Name])
+     VALUES
+           ('Pepino')
+GO
+INSERT INTO [dbo].[Food]
+           ([Name])
+     VALUES
+           ('Fresa')
+GO
+
+
+INSERT INTO [dbo].[Food]
+           ([Name])
+     VALUES
+           ('Nopales')
+GO
+INSERT INTO [dbo].[Food]
+           ([Name])
+     VALUES
+           ('Spaguetti')
+GO
+
+INSERT INTO [dbo].[Food]
+           ([Name])
+     VALUES
+           ('Arroz')
+GO
+INSERT INTO [dbo].[Food]
+           ([Name])
+     VALUES
+           ('Tomate')
+GO
+
+
+INSERT INTO [dbo].[Food]
+           ([Name])
+     VALUES
+           ('Pan Molido')
+GO
+INSERT INTO [dbo].[Food]
+           ([Name])
+     VALUES
+           ('Granola')
+GO
+
+select * from Food
+
+select * from [Ingredient]
+
+select * from Recipe
+
+select * from Warning
+
+
+
+INSERT INTO [dbo].[Ingredient]
+           ([Quantity]
+           ,[IdFood])
+     VALUES
+           (5
+           ,10)
+GO
+
+
+INSERT INTO [dbo].[RecipeIngredient]
+           ([IdIngredient]
+           ,[IdRecipe])
+     VALUES
            (1
            ,1)
 GO
+
+INSERT INTO [dbo].[Warning]
+           ([Description]
+           ,[ThreatLevel])
+     VALUES
+           ('Contiene Nuez'
+           ,5)
+GO
+
+INSERT INTO [dbo].[RecipeWarning]
+           ([IdWarning]
+           ,[IdRecipe])
+     VALUES
+           (1
+           ,1)
+GO
+
+
+
+
 
 
