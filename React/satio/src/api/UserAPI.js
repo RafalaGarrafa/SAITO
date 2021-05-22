@@ -1,9 +1,9 @@
-import {axiosBase as axios} from './AxiosConfig';
+import {axiosBase} from './AxiosConfig';
 
 export const GetAll = async () => {
     try 
     {
-        const response =await axios.get("/RegisteredUser/getall");
+        const response =await axiosBase.get("/RegisteredUser/GetAll");
         console.log("Getall", response);
     }catch(error){
         console.error(error);

@@ -22,3 +22,6 @@ function App() {
 
 
 export default App;
+//<Route exact path = '/Index/:parametro' component = {Index}></Route>
+
+//
