@@ -45,7 +45,6 @@ namespace Satio.Classes.Core
             try
             {
 
-
                 var recipes = (
                     from re in dbContext.Recipe
                     join usre in dbContext.RegisteredUserRecipe on re.Id equals usre.IdRecipe
@@ -62,6 +61,30 @@ namespace Satio.Classes.Core
                         Steps = re.Steps
                     }).ToList();
 
+                var warnings = (
+                   from re in dbContext.Recipe
+                   join rwa in dbContext.RecipeWarning on re.Id equals rwa.IdRecipe
+                   join wa in dbContext.Warning on rwa.IdWarning equals wa.Id
+                   where re.IdOwnerUser == id
+                   select new
+                   {
+                       W_Description = wa.Description,
+                       W_ThreatLevel = wa.ThreatLevel
+                   }).ToList();
+
+
+                var ingredients = (
+                   from re in dbContext.Recipe
+                   join rin in dbContext.RecipeIngredient on re.Id equals rin.IdRecipe
+                   join ing in dbContext.Ingredient on rin.Id equals ing.Id
+                   join f in dbContext.Food on ing.IdFood equals f.Id
+                   where re.IdOwnerUser == id
+                   select new
+                   {
+                       Quantity = ing.Quantity,
+                       FoodName = f.Name
+                   }).ToList();
+
                 RecipeModel structure = recipes.GroupBy(x => (x.Id, x.Username)).Select(x => new RecipeModel
                 {
                     Username = x.Key.Username,
@@ -71,7 +94,22 @@ namespace Satio.Classes.Core
                         Difficulty = y.Difficulty,
                         PrepTime = y.PrepTime,
                         Rating = y.Rating,
-                        Steps = y.Steps
+                        Steps = y.Steps,
+
+                        Ingredients = ingredients.Select(i => new IngredientViewModel
+                        {
+                            Quantity = i.Quantity,
+                            Food = new FoodViewModel
+                            {
+                                Name = i.FoodName
+                            }
+                        }).ToList(),
+
+                        Warnings = warnings.Select(w => new WarningViewModel
+                        {
+                            Description = w.W_Description,
+                            ThreatLevel = w.W_ThreatLevel
+                        }).ToList()
                     }).ToList()
                 }).First();
 

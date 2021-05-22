@@ -38,6 +38,28 @@ namespace Satio.Classes.Core
 
         }
 
+        public Warning GetLastRegistered()
+        {
+            try
+            {
+
+                List<Warning> warnings = (
+                    from w in dbContext.Warning
+                    select w
+
+                    ).ToList();
+
+                return warnings.OrderByDescending(x => x.Id).ToList().First();
+
+
+                //return contactInfos;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
         public void Create(Warning warning)
         {
             try

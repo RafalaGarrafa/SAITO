@@ -19,5 +19,26 @@ namespace Satio.Models.ViewModels
         public int PrepTime { get; set; }
         public int Difficulty { get; set; }
         public int Rating { get; set; }
+
+        public List<WarningViewModel> Warnings { get; set; }
+
+        public List<IngredientViewModel> Ingredients { get; set; }
+    }
+
+    public class IngredientViewModel
+    {
+        public int Quantity { get; set; }
+
+        public FoodViewModel Food { get; set; }
+    }
+    public class WarningViewModel
+    {
+        public string Description { get; set; }
+        public int ThreatLevel { get; set; }
+    }
+
+    public class FoodViewModel
+    {
+        public string Name { get; set; }
     }
 }

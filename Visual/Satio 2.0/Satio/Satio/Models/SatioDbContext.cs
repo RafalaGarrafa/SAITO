@@ -139,7 +139,7 @@ namespace Satio.Models
 
                 entity.HasOne(e => e.Food)
              .WithOne(y => y.Ingredient)
-             .HasForeignKey<Food>(e => e.IdFood);
+             .HasForeignKey<Ingredient>(e => e.IdFood);
              //.HasForeignKey<Food>("FK_Ingredient_Food");
                // .HasConstraintName("FK_Ingredient_Food");
             });

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Satio.Classes.Core;
 using Satio.Models;
+using Satio.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,11 +43,22 @@ namespace Satio.Controllers
 
         // GET api/<BlockedWordController>/5
         [HttpGet("{id}")]
-        public IEnumerable<RegisteredUser> Get(int id)
+        public IActionResult Get(int id)
         {
-            List<RegisteredUser> registeredUsers = dbContext.RegisteredUser.Where(registeredUsersSingle => registeredUsersSingle.Id == id).ToList();
+            // List<RegisteredUser> registeredUsers = dbContext.RegisteredUser.Where(registeredUsersSingle => registeredUsersSingle.Id == id).ToList();
+            try
+            {
+                RegisteredUserCore registeredUserCore = new RegisteredUserCore(dbContext);
 
-            return registeredUsers;
+                return Ok(registeredUserCore.GetOne(id));
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
         }
 
         [HttpPost]
@@ -94,7 +106,7 @@ namespace Satio.Controllers
 
                 registeredUserCore.Update(registeredUser, id);
 
-                return Ok("registeredUser Word Updated Succesfully");
+                return Ok("registeredUser Updated Succesfully");
             }
             catch (Exception ex)
             {

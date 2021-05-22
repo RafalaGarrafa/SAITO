@@ -38,6 +38,29 @@ namespace Satio.Classes.Core
 
         }
 
+        public Ingredient GetLastRegistered()
+        {
+            try
+            {
+
+                List<Ingredient> ingredients = (
+                    from i in dbContext.Ingredient
+                    select i
+
+                    ).ToList();
+
+                return ingredients.OrderByDescending(x => x.Id).ToList().First();
+
+
+                //return contactInfos;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public void Create(Ingredient ingredient)
         {
             try

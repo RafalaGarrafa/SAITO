@@ -61,6 +61,7 @@ namespace Satio.Controllers
             return warnings;
         }
 
+
         [HttpPost]
         public IActionResult Create([FromBody] Warning warning)
         {
@@ -69,6 +70,7 @@ namespace Satio.Controllers
                 WarnignCore warnignsCore = new WarnignCore(dbContext);
 
                 warnignsCore.Create(warning);
+
 
                 return Ok("warning Word Added Succesfully");
             }

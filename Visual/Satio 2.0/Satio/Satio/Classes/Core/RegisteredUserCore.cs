@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Satio.Models;
+using Satio.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,6 +62,48 @@ namespace Satio.Classes.Core
 
         }
 
+        public UserInfoModel GetOne(int id)
+        {
+            try
+            {
+                var users = (
+                    from us in dbContext.RegisteredUser
+                    join ci in dbContext.ContactInfo on us.IdContactInfo equals ci.Id
+                    where us.Id == id
+                    select new
+                    {
+                        FirstName = us.Name,
+                        LastName = us.LastName,
+                        Email = us.Email,
+                        Avatar = us.ProfilePicture,
+                        ContactInfo = us.ContactInfo
+                    }).ToList();
+
+                UserInfoModel structure = users.Select(x => new UserInfoModel
+                {
+                    Name = x.FirstName,
+                    LastName = x.LastName,
+                    Email = x.Email,
+                    ProfilePicture = x.Avatar,
+                    ContactInfo = new ContactInfoViewModel
+                    {
+                        Facebook = x.ContactInfo.Facebook,
+                        YouTube = x.ContactInfo.YouTube,
+                        Instagram = x.ContactInfo.Instagram,
+                        Twitter = x.ContactInfo.Twitter,
+                        WebPage = x.ContactInfo.WebPage
+                    }
+                }).First();
+
+
+                return structure;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         public void Create(RegisteredUser registeredUser)
         {
             try
@@ -70,7 +113,8 @@ namespace Satio.Classes.Core
                 if (validregisteredUser)
                 {
                     dbContext.Add(registeredUser);
-                    dbContext.SaveChanges();
+
+                    dbContext.SaveChanges(); 
                 }
             }
             catch (Exception ex)

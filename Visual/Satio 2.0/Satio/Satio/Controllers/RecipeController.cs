@@ -70,6 +70,30 @@ namespace Satio.Controllers
         }
 
         [HttpPost]
+        public IActionResult AddWarning([FromBody] RecipeWarning recipeWarning)
+        {
+            try
+            {
+                RecipeWarningCore recipeWarningCore = new RecipeWarningCore(dbContext);
+
+                //RecipeWarning NewrecipeWarning = new RecipeWarning();
+
+
+                //NewrecipeWarning.IdRecipe = IdRecipe;
+                //NewrecipeWarning.IdWarning = IdWarning;
+
+                recipeWarningCore.Create(recipeWarning);
+
+                return Ok("Warning Added to Recipe Succesfully");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex);
+
+            }
+        }
+
+        [HttpPost]
         public IActionResult Create([FromBody] Recipe recipe)
         {
             try

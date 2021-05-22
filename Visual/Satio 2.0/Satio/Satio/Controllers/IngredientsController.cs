@@ -52,8 +52,8 @@ namespace Satio.Controllers
             return ingredient;
         }
 
-        [HttpPost]
-        public IActionResult Create([FromBody] Ingredient ingredient)
+        [HttpPost("{IdRecipe}")]
+        public IActionResult Create([FromBody] Ingredient ingredient, [FromRoute] int IdRecipe)
         {
             try
             {
@@ -61,7 +61,18 @@ namespace Satio.Controllers
 
                 ingredientCore.Create(ingredient);
 
-                return Ok("ingredient Word Added Succesfully");
+                RecipeIngredientCore recipeIngredientCore = new RecipeIngredientCore(dbContext);
+
+                RecipeIngredient NewRecipeIngredient = new RecipeIngredient();
+
+                Ingredient LastIng = ingredientCore.GetLastRegistered();
+
+                NewRecipeIngredient.IdRecipe = IdRecipe;
+                NewRecipeIngredient.IdIngredient = LastIng.Id;
+
+                recipeIngredientCore.Create(NewRecipeIngredient);
+
+                return Ok("ingredient Added Succesfully");
             }
             catch (Exception ex)
             {
