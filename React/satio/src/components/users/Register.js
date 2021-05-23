@@ -20,8 +20,7 @@ const UserRegister = (props) => {
         name: "",
         lastName: "",
         email: "",
-        profilePicture:"",
-        idContactInfo: ""
+        profilePicture:""
     });
 
     const userSubmit = async (e) => {
