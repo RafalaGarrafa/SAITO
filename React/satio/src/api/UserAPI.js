@@ -4,11 +4,25 @@ export const GetAll = async () => {
     try 
     {
         const response =await axiosBase.get("/RegisteredUser/GetAll");
-        console.log("Getall", response);
+        
+        return response.data;
+
     }catch(error){
         console.error(error);
         return error;
     }
-}
- 
+};
+
+export const Register = async (user) => {
+    try 
+    {
+        const response = await axiosBase.post("/users/register", user);
+        console.log("registeruser", response)
+        //return response.data;
+
+    }catch(error){
+        console.error(error);
+        return error;
+    }
+} 
   
