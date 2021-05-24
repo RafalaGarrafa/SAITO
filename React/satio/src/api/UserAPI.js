@@ -17,13 +17,12 @@ export const Register = async (user) => {
     try 
     {
         const response = await axiosBase.post("/RegisteredUser/Create", user);
-        console.log("registeruser", response)
-        console.log("registeruser", user)
-        //return response.data;
+
+        return true;
 
     }catch(error){
-        console.error(error);
-        return error;
+
+        return false;
     }
 } 
   

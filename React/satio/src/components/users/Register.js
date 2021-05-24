@@ -2,6 +2,7 @@ import { Typography, Card, CardContent, Box, TextField, makeStyles,
 Button} from '@material-ui/core';
 import React, {useEffect, useState, Fragment} from 'react';
 import {Register} from '../../api/UserAPI';
+import {useAlert} from "react-alert";
 
 const useSatioStyle = makeStyles( satioTheme => ({
     marginForm: {
@@ -15,7 +16,7 @@ const useSatioStyle = makeStyles( satioTheme => ({
 const UserRegister = (props) => {
 
     const classes = useSatioStyle();
-
+    const alert = useAlert();
     const [user, setUser] = useState ({
         name: "",
         lastName: "",
@@ -25,7 +26,18 @@ const UserRegister = (props) => {
 
     const userSubmit = async (e) => {
         e.preventDefault();
-        await Register(user);
+        const response = await Register(user);
+        console.log("No se que onda" + response);
+        if(response){
+            alert.success("Welcome to the best community... of FOOOOD!! <3");
+            
+            //redirigirla a su menú
+            props.history.push("/users");
+        }else{
+            alert.error("Bah... something goes wrong :c \n but we can try it again!");
+            //redirigirla a su menú
+            props.history.push("/users/register");
+        }
     };
 
     const handleInputChange = (e) => {
