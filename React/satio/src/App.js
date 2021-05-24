@@ -8,7 +8,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Index from './components/Index';
 import UsersIndex from './components/users/Index'
 import UserRegister from './components/users/Register'
-import Login from './components/users/LogIn'
+import LogIn from './components/users/LogIn'
+import RecipeIndex from './components/recipe/Index'
+import RecipeRegister from './components/recipe/Register'
 
 
 
@@ -19,8 +21,7 @@ const satioTheme = createMuiTheme({
     },
     secondary: {
       main: "#ff914c"
-    },
-    background: '#f4f5ef'
+    }
   }
 })
 
@@ -52,7 +53,10 @@ function App() {
             <Route exact path = '/Index' component = {Index}></Route>
             <Route exact path = '/users' component = {UsersIndex}></Route>
             <Route exact path = '/users/register' component = {UserRegister}></Route>
-            <Route exact path = '/users/login' component = {Login}></Route>
+            <Route exact path = '/users/login' component = {LogIn}></Route>
+            <Route exact path = '/recipes' component = {RecipeIndex}></Route>
+            <Route exact path = '/recipes/register' component = {RecipeRegister}></Route>
+
 
 
             </Router>

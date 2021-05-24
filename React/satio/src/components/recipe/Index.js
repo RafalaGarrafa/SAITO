@@ -7,18 +7,19 @@ Typography, Box, Fab, Grid} from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 
 
-const UsersIndex = (props) => {
+const RecipeIndex = (props) => {
 
-    const[ users, setUsers] = useState([]);
+    const[ recipe, setRecipe] = useState([]);
 
     useEffect(() =>{
         async function fetchData() {
-            const userResult = await GetAll();
-            setUsers(userResult);
+            const recipeResult = await GetAll();
+            setRecipe(recipeResult);
         }
 
         fetchData();
     }, []);
+    
 
 
     return  (
@@ -31,8 +32,8 @@ const UsersIndex = (props) => {
                             <TableRow>
 
                                 <TableCell> Name </TableCell>
-                                <TableCell> Email </TableCell>
-                                <TableCell> Raiting </TableCell>
+                                <TableCell> Ingredients </TableCell>
+                                <TableCell> Description </TableCell>
 
                             </TableRow>
                         </TableHead>
@@ -41,13 +42,13 @@ const UsersIndex = (props) => {
 
                             {/*  TRAER DATOS DEL VISUAL
 
-                            {users.map((item, index) => (
+                            {recipes.map((item, index) => (
 
                                 <TableRow key = {index}>
 
                                 <TableCell> {item.name} </TableCell>
-                                <TableCell> {item.mail} </TableCell>
-                                <TableCell> {item.raiting} </TableCell>
+                                <TableCell> {item.ingredients} </TableCell>
+                                <TableCell> {item.description} </TableCell>
 
                                 </TableRow>
                             ))}*/} 
@@ -65,7 +66,7 @@ const UsersIndex = (props) => {
 
                 <Grid item container xs={2} justify = "flex-end" alignItems = "center">
                     <Box mt = {2} >
-                        <Fab size = "small" color="secondary" aria-label="add" href = "/users/register"> <AddIcon /> </Fab>
+                        <Fab size = "small" color="primary" aria-label="add" href = "/recipes/register"> <AddIcon /> </Fab>
                     </Box>
                 </Grid>
 
@@ -74,4 +75,4 @@ const UsersIndex = (props) => {
         </Fragment>
     )
 }
-export default UsersIndex;
+export default RecipeIndex;

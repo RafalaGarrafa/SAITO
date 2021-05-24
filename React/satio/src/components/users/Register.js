@@ -9,7 +9,7 @@ const useSatioStyle = makeStyles( satioTheme => ({
         marginTop: satioTheme.spacing(3),
     },
 
-  }));
+}));
 
 
 
@@ -52,24 +52,28 @@ const UserRegister = (props) => {
     return ( 
 
         <Fragment>
-            <Typography variant="h5"> SIGN UP </Typography>
-
+    
             <Box mt={2}>
                 <Card>
                     <CardContent>
+                    <h3 align='center'> SIGN UP</h3>
+                    
+
                         <form onSubmit = {userSubmit}>
 
-                            <TextField name ="name" variant = "outlined" label="Name" className = {classes.marginForm} 
+                            <TextField name ="name / e"  label="Name" className = {classes.marginForm} 
                             fullWidth required inputProps = {{ maxLength: 30 }} value = {user.name} onChange = {handleInputChange}/>  
 
-                            <TextField name ="lastName" variant = "outlined" label="Last name" className = {classes.marginForm} 
+                            <TextField name ="lastName"  label="Last name" className = {classes.marginForm} 
                             fullWidth required inputProps = {{ maxLength: 30 }} value = {user.lastName} onChange = {handleInputChange}/>  
 
-                            <TextField name ="email" variant = "outlined" label="Email" className = {classes.marginForm} 
+                            <TextField name ="email"  label="Email" className = {classes.marginForm} 
                             fullWidth required inputProps = {{ maxLength: 50 }} value = {user.email} onChange = {handleInputChange}/>   
 
                             <Button type= "submit" color = "secondary" variant = "contained" className = {classes.marginForm}> Sign up </Button>
-                        
+
+                            <Typography varient = "h3"></Typography>
+
                         </form>
                     </CardContent>
                 </Card>
