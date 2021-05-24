@@ -40,7 +40,7 @@ const UsersIndex = (props) => {
                         <TableBody>
 
                             {/*  TRAER DATOS DEL VISUAL
-
+*/} 
                             {users.map((item, index) => (
 
                                 <TableRow key = {index}>
@@ -50,7 +50,7 @@ const UsersIndex = (props) => {
                                 <TableCell> {item.raiting} </TableCell>
 
                                 </TableRow>
-                            ))}*/} 
+                            ))}
 
                         </TableBody>
                     </Table>

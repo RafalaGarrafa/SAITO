@@ -1,5 +1,5 @@
 import React, {useEffect, useState, Fragment} from 'react';
-import {GetAll} from '../../api/UserAPI'
+import {GetAll} from '../../api/RecipeAPI'
 
 import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper,
 Typography, Box, Fab, Grid} from '@material-ui/core';
@@ -41,8 +41,8 @@ const RecipeIndex = (props) => {
                         <TableBody>
 
                             {/*  TRAER DATOS DEL VISUAL
-
-                            {recipes.map((item, index) => (
+*/} 
+                            {recipe.map((item, index) => (
 
                                 <TableRow key = {index}>
 
@@ -51,7 +51,7 @@ const RecipeIndex = (props) => {
                                 <TableCell> {item.description} </TableCell>
 
                                 </TableRow>
-                            ))}*/} 
+                            ))}
 
                         </TableBody>
                     </Table>

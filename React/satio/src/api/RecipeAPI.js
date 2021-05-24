@@ -3,9 +3,11 @@ import {axiosBase} from './AxiosConfig';
 export const GetAll = async () => {
     try 
     {
-        const response =await axiosBase.get("/RegisteredRecipe/GetAll");
+        const response =await axiosBase.get("/Recipe/GetAll");
         
+        console.log(response.data);
         return response.data;
+
 
     }catch(error){
         console.error(error);
@@ -16,7 +18,7 @@ export const GetAll = async () => {
 export const Register = async (user) => {
     try 
     {
-        const response = await axiosBase.post("/RegisteredRecipe/Create", user);
+        const response = await axiosBase.post("/Recipe/Create", user);
 
         return true;
 

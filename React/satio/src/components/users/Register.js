@@ -61,7 +61,7 @@ const UserRegister = (props) => {
 
                         <form onSubmit = {userSubmit}>
 
-                            <TextField name ="name / e"  label="Name" className = {classes.marginForm} 
+                            <TextField name ="name"  label="Name" className = {classes.marginForm} 
                             fullWidth required inputProps = {{ maxLength: 30 }} value = {user.name} onChange = {handleInputChange}/>  
 
                             <TextField name ="lastName"  label="Last name" className = {classes.marginForm} 

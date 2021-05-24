@@ -1,7 +1,7 @@
 import { Typography, Card, CardContent, Box, TextField, makeStyles,
     Button} from '@material-ui/core';
     import React, {useEffect, useState, Fragment} from 'react';
-    import {Register} from '../../api/UserAPI';
+    import {Register} from '../../api/RecipeAPI';
     import {useAlert} from "react-alert";
     
     const useSatioStyle = makeStyles( satioTheme => ({
@@ -27,22 +27,20 @@ import { Typography, Card, CardContent, Box, TextField, makeStyles,
         const recipeSubmit = async (e) => {
             e.preventDefault();
             const response = await Register(recipe);
-            console.log("No se que onda" + response);
             if(response){
-                alert.success("Yummi yummi <3");
-                
+                alert.success("Yummi yummi <3 Recipe Registered");
                 //redirigirla a su menú
-                props.history.push("/users");
+                props.history.push("/recipes");
             }else{
                 alert.error("ugh, C'mon! Let's try again... sorry :c \n\n That was so delicious btw");
                 //redirigirla a su menú
-                props.history.push("/users/register");
+                props.history.push("/recipes/register");
             }
         };
     
         const handleInputChange = (e) => {
             const {name, value} = e.target;
-            setRecipe({
+            setRecipes({
                 ...recipe,
                 [name]: value
             })
@@ -56,10 +54,10 @@ import { Typography, Card, CardContent, Box, TextField, makeStyles,
                 <Box mt={2}>
                     <Card>
                         <CardContent>
-                        <h3 align='center'> SIGN UP</h3>
+                        <h3 align='center'> REGISTER RECIPE</h3>
                         
     
-                            <form onSubmit = {userSubmit}>
+                            <form onSubmit = {recipeSubmit}>
     
                                 <TextField name ="name / e"  label="Name" className = {classes.marginForm} 
                                 fullWidth required inputProps = {{ maxLength: 30 }} value = {recipe.name} onChange = {handleInputChange}/>  
@@ -70,7 +68,7 @@ import { Typography, Card, CardContent, Box, TextField, makeStyles,
                                 <TextField name ="description"  label="Description" className = {classes.marginForm} 
                                 fullWidth required  value = {recipe.description} onChange = {handleInputChange}/>   
     
-                                <Button type= "submit" color = "secondary" variant = "contained" className = {classes.marginForm}> Sign up </Button>
+                                <Button type= "submit" color = "secondary" variant = "contained" className = {classes.marginForm}> Register </Button>
                             
                             </form>
                         </CardContent>
